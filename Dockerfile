@@ -1,4 +1,4 @@
-FROM apache/airflow:2.7.3
+FROM apache/airflow:2.10.5-python3.12
 
 ENV DOCKER_WATCH=1
 ENV PYTHONUNBUFFERED=1

@@ -1,9 +1,9 @@
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
+from ml_pipeline.clean_data import clean_data
+from ml_pipeline.feature_engineering import feature_engineering
+from ml_pipeline.train_model import train_model
 
 
 default_args = {
@@ -11,12 +11,7 @@ default_args = {
     'retries': 1,
     'retry_delay': timedelta(minutes=2),
 }
-def clean_data():
-    print("Cleaning data...")
-def feature_engineering():
-    print("feature_engineering data...")
-def train_model():
-    print("train_model data...")
+
 with DAG(
     dag_id='trading_model_pipeline',
     default_args=default_args,

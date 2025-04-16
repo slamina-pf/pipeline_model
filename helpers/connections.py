@@ -14,3 +14,4 @@ EXCHANGE = ccxt.binance({
 })
 
 EXCHANGE.set_sandbox_mode(True)
+EXCHANGE.enableRateLimit = True

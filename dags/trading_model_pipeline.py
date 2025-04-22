@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
-from ml_pipeline.clean_data import clean_data
+from ml_pipeline.clean_data import DataCleaning
 from ml_pipeline.feature_engineering import feature_engineering
 from ml_pipeline.train_model import train_model
 
@@ -21,6 +21,10 @@ with DAG(
     catchup=False,
     tags=['trading', 'ml']
 ) as dag:
+
+    def clean_data():
+        data_cleaner = DataCleaning()
+        data_cleaner.clean_data()
 
     clean_data_task = PythonOperator(
         task_id='clean_data',

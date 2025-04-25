@@ -13,7 +13,7 @@ class DataCollector:
         self.limit = limit
         self.data_storage_name = data_storage_name
         self.end_date = datetime.now(timezone.utc)
-        self.start_date = datetime.now(timezone.utc) - timedelta(days=30)
+        self.start_date = datetime.now(timezone.utc) - timedelta(days=365)
 
     def to_milliseconds(self, dt):
         return int(dt.timestamp() * 1000)
@@ -43,7 +43,7 @@ class DataCollector:
     def save(self, data):
         os.makedirs(f'{TEMP_DATA_GENERAL_PATH}', exist_ok=True)
         df = pd.DataFrame(data, columns=["timestamp", "open", "high", "low", "close", "volume"])
-        df.to_parquet(f'{TEMP_DATA_GENERAL_PATH}{self.data_storage_name}.parquet', index=False)
+        df.to_parquet(f'{TEMP_DATA_GENERAL_PATH}/{self.data_storage_name}.parquet', index=False)
 
     def save_data(self):
         data = self.collect_data()

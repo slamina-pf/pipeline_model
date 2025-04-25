@@ -48,11 +48,11 @@ class DataCleaning:
 
         os.makedirs(f'{TEMP_DATA_GENERAL_PATH}', exist_ok=True)
         df = pd.DataFrame(df, columns=["timestamp", "open", "high", "low", "close", "volume"])
-        df.to_parquet(f'{TEMP_DATA_GENERAL_PATH}btc_usdt_1m_cleaned.parquet', index=False)
+        df.to_parquet(f'{TEMP_DATA_GENERAL_PATH}/btc_usdt_5m_cleaned.parquet', index=False)
 
 
     def clean_data(self):
-        table = pq.read_table('./ml_pipeline/temp_data/btc_usdt_1m.parquet')
+        table = pq.read_table('./ml_pipeline/temp_data/btc_usdt_5m.parquet')
         df = table.to_pandas()
         df["timestamp"] = pd.to_datetime(df["timestamp"], unit='ms')
 

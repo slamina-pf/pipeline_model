@@ -20,7 +20,7 @@ with DAG(
 ) as dag:
 
     def collect_data():
-        collector = DataCollector(symbol='BTC/USDT', timeframe='1m', limit=1000, data_storage_name='btc_usdt_1m')
+        collector = DataCollector(symbol='BTC/USDT', timeframe='5m', limit=1000, data_storage_name='btc_usdt_5m')
         collector.save_data()
 
     collect_data_task = PythonOperator(

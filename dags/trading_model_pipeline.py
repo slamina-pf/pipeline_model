@@ -2,8 +2,8 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 from ml_pipeline.clean_data import DataCleaning
-from ml_pipeline.feature_engineering import feature_engineering
-from ml_pipeline.train_model import train_model
+from ml_pipeline.feature_engineering import FeatureEngineering
+from ml_pipeline.train_model import TrainModel
 
 
 default_args = {
@@ -25,6 +25,14 @@ with DAG(
     def clean_data():
         data_cleaner = DataCleaning()
         data_cleaner.clean_data()
+
+    def feature_engineering():
+        feature_engineer = FeatureEngineering()
+        feature_engineer.feature_engineering()
+
+    def train_model():
+        model_trainer = TrainModel()
+        model_trainer.train()
 
     clean_data_task = PythonOperator(
         task_id='clean_data',

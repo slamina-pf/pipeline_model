@@ -18,9 +18,11 @@ USER airflow
 
 # Install Python packages
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --default-timeout=100 --no-cache-dir -r requirements.txt
 
 # Copy init script (ensure LF line endings, not CRLF)
+USER root
 COPY --chmod=+x scripts/init.sh /scripts/init.sh
+RUN chmod +x /scripts/init.sh
 
 ENTRYPOINT ["/scripts/init.sh"]

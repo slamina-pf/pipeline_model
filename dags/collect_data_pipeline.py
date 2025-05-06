@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
-from helpers.collect_data import DataCollector
+from shared.collect_data import DataCollector
 
 default_args = {
     'owner': 'airflow',

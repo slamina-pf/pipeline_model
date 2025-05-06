@@ -47,9 +47,8 @@ services:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
-      - ./ml_pipeline:/opt/airflow/ml_pipeline
+      - ./shared:/opt/airflow/shared
       - ./helpers:/opt/airflow/helpers
-      - ./models:/opt/airflow/models
     ports:
       - "8080:8080"
     command: webserver
@@ -76,9 +75,8 @@ services:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
-      - ./ml_pipeline:/opt/airflow/ml_pipeline
+      - ./shared:/opt/airflow/shared
       - ./helpers:/opt/airflow/helpers
-      - ./models:/opt/airflow/models
     command: scheduler
 
 volumes:

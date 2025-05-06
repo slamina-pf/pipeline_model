@@ -1,9 +1,9 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
-from ml_pipeline.clean_data import DataCleaning
-from ml_pipeline.feature_engineering import FeatureEngineering
-from ml_pipeline.train_model import TrainModel
+from shared.clean_data import DataCleaning
+from shared.feature_engineering import FeatureEngineering
+from shared.train_model import TrainModel
 
 
 default_args = {
